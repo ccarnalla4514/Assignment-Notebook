@@ -8,8 +8,17 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+ 
+    
+    
+    
     @IBOutlet weak var tableView: UITableView!
-    let assignments = ["Geometry packet", "Computer Programming Final Unit App", "Biology Classkick"]
+   
+    
+    @IBOutlet weak var textField: UITextField!
+ 
+    var assignments = ["Geometry packet", "Computer Programming Final Unit App", "Biology Classkick"]
     
     
 
@@ -26,9 +35,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let mycell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
         mycell.textLabel!.text = assignments[indexPath.row]
-   return mycell
+        return mycell
     }
     
-
+    @IBAction func addAssignment(_ sender: UIBarButtonItem) {
+        if let newAssignment = textField.text {
+            assignments.append(newAssignment)
+            tableView.reloadData()
+            
+        } else {
+            print("No Assignment Entered")
+        }
+    }
+    
 }
 
